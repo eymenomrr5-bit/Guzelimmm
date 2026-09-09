@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle, #26000b, #050005 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart {
+  font-size: 20px;
+  opacity: 0;
+  animation: heart 2s ease forwards;
+  filter: drop-shadow(0 0 20px #ff1744);
+}
+
+.message {
+  margin-top: 100px;
+  font-size: 22px;
+  opacity: 0;
+  animation: message 2s ease 1.8s forwards;
+}
+
+@keyframes heart {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(6);
+  }
+}
+
+@keyframes message {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  top: -20px;
+  font-size: 20px;
+  animation: fall 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(105vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="heart">❤️</div>
+  <div class="message">
+    Senin için küçük bir sürpriz ❤️
+  </div>
+</div>
+
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+
+  heart.className = "sparkle";
+  heart.innerHTML = "❤️";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
